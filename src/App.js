@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './App.css'; //importo los estilos
+//import tobuy from './elements/tobuy.json' //importo el json con los items
+import Products from './components/Products.js';   //importo el componente  con la lista de productos
+import products from './elements/products.json';  // importo el archivo  .json
+import Shoppingcart from './components/Shoppingcart';
+class App extends Component{
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  state = {
+    products : products   //el valor de la propiedad products es lo que se importa del json
+  }
+
+  render(){
+  return( 
+    // llamo al componente products y el valor va a ser los datos que tengo en state:
+    <div>
+     <Shoppingcart/>
+     <Products products = {this.state.products}/>
+     </div>
+
+  )
+  }
 }
 
 export default App;
