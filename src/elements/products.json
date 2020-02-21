@@ -1,3 +1,4 @@
+
 [
 
     {
@@ -6,7 +7,8 @@
         "code": "Product code X7R2OPX",
         "description":"Shirt",
         "name": "Cabify T-Shirt",
-        "price": 20.00
+        "price": 20.00,
+        "quantity":0
     },
 
     {
@@ -15,7 +17,8 @@
         "description":"Mug",
         "code": "Product code X2G2OPZ",
         "name": "Cafify Coffee Mug",
-        "price": 5.00
+        "price": 5.00,
+        "quantity":0
     },
 
     {
@@ -24,7 +27,8 @@
         "description":"Cap",
         "code": "Product code X3W2OPY",
         "name": "Cabify Cap",
-        "price": 10.00
+        "price": 10.00,
+        "quantity":0
     }
 
 ]
