@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 //creo la clase Product que contiene la lista de items que se venden con su informacion
 export default class Product extends Component{
     //props contiene handleProducts y product de Products.js
@@ -14,14 +13,14 @@ export default class Product extends Component{
             description: props.product.description,
         }
 
-        this.handleProductsParent = props.handleProducts;
+        this.handleProducts = props.handleProducts;
         
         this.onClickLess = this.onClickLess.bind(this);
         this.onClickMore = this.onClickMore.bind(this);
     }
 
     onClickLess (e) {
-        if (this.state.quantity!==0) {
+        if (this.state.quantity > 0) {
             //convierto la cantidad de string a integer
             const numQuantity = parseInt(this.state.quantity);
             const decQuantity = numQuantity - 1 ;
@@ -29,7 +28,7 @@ export default class Product extends Component{
             quantity: decQuantity,
             })      
             const productCode = this.state.code;
-            this.handleProductsParent(productCode, decQuantity)
+            this.handleProducts(productCode, decQuantity)
             
         }
     }    
@@ -41,15 +40,11 @@ export default class Product extends Component{
             quantity: sumQuantity,
         })
         const productCode = this.state.code;
-        this.handleProductsParent(productCode,sumQuantity)      
+        this.handleProducts(productCode,sumQuantity)      
     }    
 
     
     render(){
-    
-    const {handleProducts} = this.props
-    console.log(handleProducts)
-    
 
         return <li className="product row">
             <div className="col-product">
@@ -73,10 +68,11 @@ export default class Product extends Component{
                 <span className="product-currency currency">€</span>
             </div>
             <div className="col-total">
-                <span className="product-price">{this.state.price}</span
+                <span className="product-price">{this.state.price * this.state.quantity}</span
                 ><span className="product-currency currency">€</span>
             </div>
         </li>
+        
     }
 
 

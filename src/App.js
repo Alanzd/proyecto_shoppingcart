@@ -31,6 +31,7 @@ class App extends Component{
     this.setState({
       products:products
     })    
+    
   }
 
   render(){
@@ -39,7 +40,7 @@ class App extends Component{
         <section className="products">
           <ShoppingHeader/>
           {/* con Object.values lo que hago es tranformar de nuevo los objetos en un array */}
-          <Products products = {Object.values(this.state.products)} handleProducts = {this.handleProducts}/> */
+          <Products products = {Object.values(this.state.products)} handleProducts = {this.handleProducts}/>
         </section>
           <Order products = {Object.values(this.state.products)}/>
       </main> 
