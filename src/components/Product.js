@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
+
 //creo la clase Product que contiene la lista de items que se venden con su informacion
 export default class Product extends Component{
-
+    //props contiene handleProducts y product de Products.js
     constructor(props){
         super(props)
         this.state = {
@@ -11,30 +12,44 @@ export default class Product extends Component{
             price: props.product.price,
             code: props.product.code,
             description: props.product.description,
-        } 
+        }
+
+        this.handleProductsParent = props.handleProducts;
+        
         this.onClickLess = this.onClickLess.bind(this);
         this.onClickMore = this.onClickMore.bind(this);
     }
 
-    onClickLess () {
+    onClickLess (e) {
         if (this.state.quantity!==0) {
-            let numQuantity = parseInt(this.state.quantity);
-        let decQuantity = numQuantity - 1 ;
-        this.setState({
+            //convierto la cantidad de string a integer
+            const numQuantity = parseInt(this.state.quantity);
+            const decQuantity = numQuantity - 1 ;
+            this.setState({
             quantity: decQuantity,
-        })      
+            })      
+            const productCode = this.state.code;
+            this.handleProductsParent(productCode, decQuantity)
+            
         }
     }    
-
-    onClickMore () {
-        let numbQuantity = parseInt(this.state.quantity);
-        let sumQuantity = numbQuantity + 1 ;
+   
+    onClickMore (e) {
+        const numbQuantity = parseInt(this.state.quantity);
+        const sumQuantity = numbQuantity + 1 ;
         this.setState({
             quantity: sumQuantity,
-        })      
+        })
+        const productCode = this.state.code;
+        this.handleProductsParent(productCode,sumQuantity)      
     }    
 
+    
     render(){
+    
+    const {handleProducts} = this.props
+    console.log(handleProducts)
+    
 
         return <li className="product row">
             <div className="col-product">
@@ -50,7 +65,7 @@ export default class Product extends Component{
             <div className="col-quantity">
                 <button className="count" onClick = {this.onClickLess}>-</button>
                 {/* cambio value por defaultValue */}
-                <input type="text" className="product-quantity" defaultValue = "0" value= {this.state.quantity}/>
+                <input type="text" className="product-quantity" defaultValue = "0" value = {this.state.quantity}/>
                 <button className="count" onClick = {this.onClickMore}>+</button>
             </div>
             <div className="col-price">
@@ -61,6 +76,8 @@ export default class Product extends Component{
                 <span className="product-price">{this.state.price}</span
                 ><span className="product-currency currency">€</span>
             </div>
-                </li>
+        </li>
     }
+
+
 }
