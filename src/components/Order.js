@@ -5,37 +5,45 @@ export default class Order extends Component{
 //props contiene products de App.js
 constructor(props){
   super(props)
-
   this.state = { 
-    products:props.products
-    
+    products: props.products
   } 
-  console.log(props);
+  console.log(this.state.products);
   
-  this.totalItems = this.totalItems.bind(this)
-
 }
 
-totalItems(){
-  for(let i = 0; i < this.state.products.length; i++) {
-       return <p>Hola</p>
+extractQt () {
+  let quant = 0;
+  for (var i = 0; i< this.state.products.length; i++){
+    quant += this.state.products[i].quantity
+    console.log(quant);
+    
   }
   
+  return quant;
+}
 
+extractTotal() {
+  let total = 0;
+  for (var i = 0; i< this.state.products.length; i++){
+    total += this.state.products[i].price * this.state.products[i].quantity
+  }
+  return total;
+}
 
-// totalPrice(){
-
-// }
+totalCost () {
+  return this.extractTotal()
+}
 
   render(){
-    
+ 
     return <aside className="summary">
       <h1 className="main">Order Summary</h1>
         <ul className="summary-items wrapper border">
           <li>
-            <span className="summary-items-number">{this.totalItems}</span>
+            <span className="summary-items-number">{this.extractQt()}</span>
             <span className="summary-items-price">
-              
+              {this.extractTotal()}
               <span className="currency">€</span>
             </span>
           </li>
@@ -52,11 +60,11 @@ totalItems(){
         <ul>
           <li>
             <span className="summary-total-cost">Total cost</span
-            ><span className="summary-total-price"></span>
+            ><span className="summary-total-price">{this.totalCost()}</span>
           </li>
         </ul>
         <button type="submit">Checkout</button>
       </div>
     </aside>
-    }
+  }
 }
