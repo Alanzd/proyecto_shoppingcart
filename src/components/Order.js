@@ -51,7 +51,7 @@ totalCost () {
       <div className="summary-discounts wrapper-half border">
         <h2>Discounts</h2>
         <ul>
-          <li><span>2x1 Mug offer</span><span>0</span></li>
+          <li><span>2x1 Mug offer</span><span>0€</span></li>
           <li><span>x3 Shirt offer</span><span>-3€</span></li>
           <li><span>Promo code</span><span>0€</span></li>
         </ul>
@@ -59,8 +59,8 @@ totalCost () {
       <div className="summary-total wrapper">
         <ul>
           <li>
-            <span className="summary-total-cost">Total cost</span
-            ><span className="summary-total-price">{this.totalCost()}</span>
+            <span className="summary-total-cost">Total cost</span>
+            <span className="summary-total-price">{this.totalCost()}€</span>
           </li>
         </ul>
         <button type="submit">Checkout</button>
