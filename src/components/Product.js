@@ -74,7 +74,7 @@ export default class Product extends Component{
                     <img src= {require('../img/'+ (this.state.image))} alt="Shirt" onClick={this.openDetails}/> 
                     <div className="product-description">
                         <h1>{this.state.description}</h1>
-                        <p className="product-code">{this.state.code}</p>
+                        <p className="product-code">Product code {this.state.code}</p>
                     </div>   
                     <ReactModal
                         className = "bonus_summary"

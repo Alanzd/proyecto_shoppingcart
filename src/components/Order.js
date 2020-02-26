@@ -41,14 +41,14 @@ export default class Order extends Component{
     console.log(products);
     
     for (var i = 0; i< products.length; i++){
-      if(products[i].description === "Mug"){
+      if(products[i].code === "X2G2OPZ"){
         if(products[i].quantity%2 === 0){
           discounts.Mug = 0-(products[i].price * products[i].quantity * 0.5)
         }else {
           discounts.Mug = 0-(products[i].price * (products[i].quantity-1) * 0.5)
         }
       }
-      if (products[i].description === "Shirt"){
+      if (products[i].code === "X7R2OPX"){
         if(products[i].quantity >= 3){
           discounts.Shirt = 0-(products[i].price * products[i].quantity * 0.05)
         }
