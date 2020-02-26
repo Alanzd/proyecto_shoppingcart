@@ -90,9 +90,7 @@ export default class Product extends Component{
                             <p> {this.state.fullDescription} </p> <br/>
                             <p> {this.state.code} </p> <br/>
                             <button className = "bonus_summary_button" onClick={this.bothFunctions}>Add to cart</button>
-                        </div>
-                        
-                        
+                        </div>                        
                 </ReactModal>            
                 </figure>
             </div>
