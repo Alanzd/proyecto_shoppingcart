@@ -360,6 +360,19 @@ input {
   border-radius: 4px;
 }
 
+.product-image {
+  display: flex;
+  align-items: left;
+  flex-flow: row nowrap;
+}
+
+.bonus-image img {
+  margin-right: 16px;
+  width: 500px;
+  border: 1px solid #cacad1;
+  border-radius: 4px;
+}
+
 .product-code {
   border-radius: 4px;
   color: #a6a7b3;
@@ -488,4 +501,68 @@ input {
   font-weight: bold;
   line-height: 14px;
   cursor: pointer;
+}
+
+.bonus_summary {
+  position: fixed;
+  top: 20%;
+  right:30%;
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 20px;
+  width: 500px;
+  background-color: #f3f3f3;
+  color: #212240;
+}
+
+.bonus_summary-items-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.bonus_summary_button{
+  margin-top: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+  border-radius: 4px;
+  background: #7350ff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+#clickclose {
+  background-color: white;
+  position: relative;
+  top:-15px;
+  right:-170px;
+  width: 5%;
+  height:5%;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+.bonus_product-code {
+
+  border-radius: 4px;
+  align-items: center;
+  color: black;
+  letter-spacing: 0.13px;
+}
+
+.bonus-image{
+  margin-right: 16px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #cacad1;
+  border-radius: 4px;
 }

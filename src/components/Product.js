@@ -23,6 +23,8 @@ export default class Product extends Component{
         
         this.onClickLess = this.onClickLess.bind(this);
         this.onClickMore = this.onClickMore.bind(this);
+        
+        this.bothFunctions = this.bothFunctions.bind(this);
     }
 
     onClickLess (e) {
@@ -57,6 +59,11 @@ export default class Product extends Component{
         this.setState({ 
             showDetails: false });
     }
+
+    bothFunctions () {
+        this.onClickMore();
+        this.closeDetails();
+    }
     
     render(){
         
@@ -70,14 +77,22 @@ export default class Product extends Component{
                         <p className="product-code">{this.state.code}</p>
                     </div>   
                     <ReactModal
+                        className = "bonus_summary"
                         isOpen={this.state.showDetails}
-                        contentLabel="Cerrar Detalles"
                         ariaHideApp={false}
-                        // onRequestClose={this.closeDetails}
-                    >
-                        <img src= {require('../img/'+ (this.state.image))} alt="Shirt"/>
-                        <div>{this.state.fullDescription}</div>
-                        <button onClick={this.closeDetails}>Cerrar</button>
+                    >   
+                        <div>
+                            <img className = "bonus-image" src= {require('../img/'+ (this.state.image))} alt="Shirt"/>
+                        </div>
+                        <div className = "bonus_product-code">
+                            <button id = "clickclose" onClick={this.closeDetails}>X</button>
+                            <h1> {this.state.description} {this.state.price}€</h1> <br/>
+                            <p> {this.state.fullDescription} </p> <br/>
+                            <p> {this.state.code} </p> <br/>
+                            <button className = "bonus_summary_button" onClick={this.bothFunctions}>Add to cart</button>
+                        </div>
+                        
+                        
                 </ReactModal>            
                 </figure>
             </div>
