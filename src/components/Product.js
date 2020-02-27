@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import ReactModal from 'react-modal';
-
-//creo la clase Product que contiene la lista de items que se venden con su informacion
+import ReactModal from 'react-modal';  //import the component from react to render modals 
+// create Product class, containing the item´s list and their information(image,price,code,...): 
 export default class Product extends Component{
-    //props contiene handleProducts y product de Products.js
+    //props contains handleProducts and product from Products.js:
     constructor(props){
         super(props)
         this.state = {
@@ -15,9 +14,11 @@ export default class Product extends Component{
             fullDescription: props.product.fullDescription,
             showDetails: false,
         }
-
+        // the function handleProducts is received from Products component
+        // the parameters will be updated here and sent again to App.js
         this.handleProducts = props.handleProducts;
 
+        // the following functions are the ones defined in this class (Product):
         this.openDetails = this.openDetails.bind(this);
         this.closeDetails = this.closeDetails.bind(this);
         
@@ -26,40 +27,51 @@ export default class Product extends Component{
         
         this.bothFunctions = this.bothFunctions.bind(this);
     }
-
+    //the function onClickLess decrements the value of quantity by 1:
     onClickLess (e) {
+        // the quantity is updated only if it's greater than 0:
         if (this.state.quantity > 0) {
-            //convierto la cantidad de string a integer
+            //convert the quantity from string to integer:
             const numQuantity = parseInt(this.state.quantity);
+            // decrement it by 1
             const decQuantity = numQuantity - 1 ;
+            //update the state, quantity will be the new decremented quantity:
             this.setState({
             quantity: decQuantity,
-            })      
+            });    
+            //handleProducts in App.js is updated with the parameters productCode and quantity obtained here:
             const productCode = this.state.code;
             this.handleProducts(productCode, decQuantity)
         }
     }    
-   
+    //the function onClickMore increments the value of quantity by 1:
     onClickMore (e) {
+         //convert the quantity from string to integer:
         const numbQuantity = parseInt(this.state.quantity);
+        // increment it by 1
         const sumQuantity = numbQuantity + 1 ;
+        //update the state, quantity will be the new incremented quantity:
         this.setState({
             quantity: sumQuantity,
         })
+        //handleProducts in App.js is updated with the parameters productCode and quantity obtained here:
         const productCode = this.state.code;
         this.handleProducts(productCode,sumQuantity)      
     }
-
+    // change showDetails to true (to render the modal that contains the product details):
     openDetails () {
         this.setState({
-            showDetails: true,
-        })
-    }
+            showDetails: true
+        });
+    } 
+    // change showDetails to false (to render the modal that contains the product details):
     closeDetails () {
         this.setState({ 
-            showDetails: false });
+            showDetails: false 
+        });
     }
 
+    //when clicking "Add to cart", the function bothFunctions add the selected item to the shopping cart and close the modal
     bothFunctions () {
         this.onClickMore();
         this.closeDetails();
@@ -70,7 +82,7 @@ export default class Product extends Component{
         return <li className="product row">
             <div className="col-product">
                 <figure className="product-image">
-                    {/* la ruta de las imagenes es ../img/ + 'nombre de la imagen' que está en el json */}
+                    {/* the images path is ../img/ + the 'img name' in the json file */}
                     <img src= {require('../img/'+ (this.state.image))} alt="Shirt" onClick={this.openDetails}/> 
                     <div className="product-description">
                         <h1>{this.state.description}</h1>
@@ -78,7 +90,9 @@ export default class Product extends Component{
                     </div>   
                     <ReactModal
                         className = "bonus_summary"
+                        // isOpen takes the value "true" and the modal is opened:
                         isOpen={this.state.showDetails}
+                        //to avoid the Warning "react-modal: App element is not defined" in console:
                         ariaHideApp={false}
                     >   
                         <div>
@@ -96,8 +110,9 @@ export default class Product extends Component{
             </div>
             <div className="col-quantity">
                 <button className="count" onClick = {this.onClickLess}>-</button>
-                {/* cambio value por defaultValue */}
-                <input type="text" className="product-quantity" defaultValue = "0" value = {this.state.quantity}/>
+                {/* readOnly = 0 to avoid Warning: Failed prop type: 
+                You provided a `value` prop to a form field without an `onChange` handler*/}
+                <input type="number" className="product-quantity" readOnly = "0" value = {this.state.quantity}/>
                 <button className="count" onClick = {this.onClickMore}>+</button>
             </div>
             <div className="col-price">
@@ -105,13 +120,10 @@ export default class Product extends Component{
                 <span className="product-currency currency">€</span>
             </div>
             <div className="col-total">
+                {/* calculate the total multiplying price by item´s quantity*/}
                 <span className="product-price">{this.state.price * this.state.quantity}</span
                 ><span className="product-currency currency">€</span>
             </div>
-            
             </li>
-        
     }
-
-
 }

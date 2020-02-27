@@ -1,51 +1,48 @@
 import React, { Component } from 'react';
-import './App.css'; //importo los estilos
-import Products from './components/Products.js';   //importo el componente con la lista de producto
+import './App.css'; 
+import Products from './components/Products.js';
 import ShoppingHeader from './components/ShoppingHeader';
 import Order from './components/Order';
-import products from './elements/products.json';
+import products from './elements/products.json'; 
 
-class App extends Component{
+export default class App extends Component{
 
   constructor(props){
     super(props)
     let mapProducts = {}  
-    //recorro el array y cada elemento pasa a ser un objeto 
-    //cada objeto tendrá como clave el code, asi la clave [0] será [Product code X7R2OPX]
+    //iterate the array, convert the list into a products map
+    //the key for each object is now the code, e.g, the key [0] will be [X7R2OPX]
+    // this is done to make the product list easily accesible
     for(let i = 0; i < products.length; i++){
       mapProducts[products[i].code] = products[i]; 
     }
     this.state = {
-      products : mapProducts
+      products : mapProducts //products is the new array
     }
-    console.log(mapProducts);
-    
     this.handleProducts = this.handleProducts.bind(this)
   }
-
+  // the parameters productCode and newQuantity will come from the component Product
   handleProducts (productCode, newQuantity){
     let products = this.state.products
+    // the product quantity is the newQuantity (from Product Component):
     products[productCode].quantity = newQuantity
-
-    //TODO: probar sin setState
+    // update the state with the new quantity
     this.setState({
       products:products
     })    
-    
   }
 
   render(){
+    //Object.values transforms the products map to the original array to use "for" loops in Order component
+    let objectToList = Object.values(this.state.products);
     return( 
       <main className="App">
         <section className="products">
           <ShoppingHeader/>
-          {/* con Object.values lo que hago es tranformar de nuevo los objetos en un array */}
-          <Products products = {Object.values(this.state.products)} handleProducts = {this.handleProducts}/>
+          <Products products = {objectToList} handleProducts = {this.handleProducts}/>
         </section>
-          <Order products = {Object.values(this.state.products)}/>
+          <Order products = {objectToList}/>
       </main> 
     )
   }
 }
-
-export default App;

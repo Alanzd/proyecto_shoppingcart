@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-//creo la clase Shoppingcart que incluye los encabezados de la lista de productos
+//contains the headers for the products list
 export default class ShoppingHeader extends Component{  
     render(){
         return <div>

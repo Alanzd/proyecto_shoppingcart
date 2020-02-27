@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class Order extends Component{
 
-//props contiene products de App.js
+  //props contains product from App.js
   constructor(props){
     super(props)
     this.state = { 
@@ -10,16 +10,16 @@ export default class Order extends Component{
     } 
     this.getDiscounts = this.getDiscounts.bind(this);
   }
-
+  // iterate the array comming in props (product) 
+  // returns the total amount of items in the product list
   extractQt () {
     let quant = 0;
     for (var i = 0; i< this.state.products.length; i++){
       quant += this.state.products[i].quantity    
     }
-    
     return quant;
   }
-
+  //iterate the product´s array and multiply each price by each items quantity:
   extractTotal() {
     let total = 0;
     for (var i = 0; i< this.state.products.length; i++){
@@ -27,35 +27,36 @@ export default class Order extends Component{
     }
     return total;
   }
-
-  totalCost () {
-    return this.extractTotal()
-  }
-
+  //calculate the discounts for Mug and Shirt:
   getDiscounts () {
     let discounts = {
       "Mug": 0,
       "Shirt": 0,  
     }
     let products = this.state.products
-    console.log(products);
-    
+    // iterate product´s array from props:
     for (var i = 0; i< products.length; i++){
+      // if the products code is equal to mug´s code
       if(products[i].code === "X2G2OPZ"){
+        // and the quantity is an even number:
         if(products[i].quantity%2 === 0){
+          // multiply mug´s price by items quantity and apply the 50% discount
           discounts.Mug = 0-(products[i].price * products[i].quantity * 0.5)
         }else {
+          // if quantity is an odd number
+          // decrease total items by 1 and and apply the 50% discount 
           discounts.Mug = 0-(products[i].price * (products[i].quantity-1) * 0.5)
         }
       }
+      // if the products code is equal to shirt´s code
       if (products[i].code === "X7R2OPX"){
-        if(products[i].quantity >= 3){
+        // and the items quantiy is greater than 2:
+        if(products[i].quantity > 2){
+          // apply the 5% discount (0.05) to the shirt´s price
           discounts.Shirt = 0-(products[i].price * products[i].quantity * 0.05)
         }
       }
     }
-    console.log(discounts);
-    
     return discounts;
   }
     
@@ -84,7 +85,8 @@ export default class Order extends Component{
         <ul>
           <li>
             <span className="summary-total-cost">Total cost</span>
-            <span className="summary-total-price">{this.totalCost() + discounts.Mug + discounts.Shirt}€</span>
+            {/* calculate the final price subtracting the discounts from the total price */}
+            <span className="summary-total-price">{this.extractTotal() + discounts.Mug + discounts.Shirt}€</span>
           </li>
         </ul>
         <button type="submit">Checkout</button>
