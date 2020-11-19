@@ -3,9 +3,9 @@
     {
         "id":0,
         "image":"shirt.png",
-        "code": "X7R2OPX",
+        "code": "0001",
         "fullDescription":"This is a super cool Shirt",
-        "name": "Cabify T-Shirt",
+        "name": "T-Shirt",
         "price": 20.00,
         "quantity":0,
         "description": "Shirt"
@@ -14,9 +14,9 @@
     {
         "id":1,
         "image":"mug.png",
-        "fullDescription":"Ohhh my Mug",
-        "code": "X2G2OPZ",
-        "name": "Cafify Coffee Mug",
+        "fullDescription":"Wake up and smell the coffee",
+        "code": "0002",
+        "name": "Coffee Mug",
         "price": 5.00,
         "quantity":0,
         "description": "Mug"
@@ -25,9 +25,9 @@
     {
         "id":2,
         "image":"cap.png",
-        "fullDescription":"This is a Cap to keep your brain warm ",
-        "code": "X3W2OPY",
-        "name": "Cabify Cap",
+        "fullDescription":"This is a Cap to protect your brain ",
+        "code": "0003",
+        "name": "Cap",
         "price": 10.00,
         "quantity":0,
         "description": "Cap"

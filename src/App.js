@@ -11,7 +11,7 @@ export default class App extends Component{
     super(props)
     let mapProducts = {}  
     //iterate the array, convert the list into a products map
-    //the key for each object is now the code, e.g, the key [0] will be [X7R2OPX]
+    //the key for each object is now the code, e.g, the key [0] will be [0001]
     // this is done to make the product list easily accesible
     for(let i = 0; i < products.length; i++){
       mapProducts[products[i].code] = products[i]; 

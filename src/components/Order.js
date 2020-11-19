@@ -37,7 +37,7 @@ export default class Order extends Component{
     // iterate product´s array from props:
     for (var i = 0; i< products.length; i++){
       // if the products code is equal to mug´s code
-      if(products[i].code === "X2G2OPZ"){
+      if(products[i].code === "0002"){
         // and the quantity is an even number:
         if(products[i].quantity%2 === 0){
           // multiply mug´s price by items quantity and apply the 50% discount
@@ -49,7 +49,7 @@ export default class Order extends Component{
         }
       }
       // if the products code is equal to shirt´s code
-      if (products[i].code === "X7R2OPX"){
+      if (products[i].code === "0001"){
         // and the items quantiy is greater than 2:
         if(products[i].quantity > 2){
           // apply the 5% discount (0.05) to the shirt´s price
@@ -64,7 +64,7 @@ export default class Order extends Component{
     var discounts = this.getDiscounts()  
     return <aside className="summary">
       <h1 className="main">Order Summary</h1>
-        <ul className="summary-items wrapper border">
+        <ul className="summary-items">
           <li>
             <span className="summary-items-number">{this.extractQt()}</span>
             <span className="summary-items-price">
@@ -73,15 +73,14 @@ export default class Order extends Component{
             </span>
           </li>
         </ul>
-      <div className="summary-discounts wrapper-half border">
+      <div className="summary-discounts">
         <h2>Discounts</h2>
         <ul>
           <li><span>2x1 Mug offer</span><span>{discounts.Mug}€</span></li>
-          <li><span>x3 Shirt offer</span><span>{discounts.Shirt}€</span></li>
-          <li><span>Promo code</span><span>0€</span></li>
+          <li><span>x3 Shirt offer 15%</span><span>{discounts.Shirt}€</span></li>
         </ul>
       </div>
-      <div className="summary-total wrapper">
+      <div className="summary-total">
         <ul>
           <li>
             <span className="summary-total-cost">Total cost</span>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactModal from 'react-modal';  //import the component from react to render modals 
 // create Product class, containing the item´s list and their information(image,price,code,...): 
+
 export default class Product extends Component{
     //props contains handleProducts and product from Products.js:
     constructor(props){
@@ -14,6 +15,7 @@ export default class Product extends Component{
             fullDescription: props.product.fullDescription,
             showDetails: false,
         }
+   
         // the function handleProducts is received from Products component
         // the parameters will be updated here and sent again to App.js
         this.handleProducts = props.handleProducts;
@@ -76,14 +78,13 @@ export default class Product extends Component{
         this.onClickMore();
         this.closeDetails();
     }
-    
+
     render(){
-        
-        return <li className="product row">
+    return <li className="product row">
             <div className="col-product">
                 <figure className="product-image">
                     {/* the images path is ../img/ + the 'img name' in the json file */}
-                    <img src= {require('../img/'+ (this.state.image))} alt="Shirt" onClick={this.openDetails}/> 
+                    <img src= {require('../img/'+ (this.state.image))} alt="IMG" onClick={this.openDetails}/> 
                     <div className="product-description">
                         <h1>{this.state.description}</h1>
                         <p className="product-code">Product code {this.state.code}</p>
@@ -96,7 +97,7 @@ export default class Product extends Component{
                         ariaHideApp={false}
                     >   
                         <div>
-                            <img className = "bonus-image" src= {require('../img/'+ (this.state.image))} alt="Shirt"/>
+                        <img className = "bonus_image" src= {require('../img/'+ (this.state.image))} alt="Shirt"/>
                         </div>
                         <div className = "bonus_product-code">
                             <button id = "clickclose" onClick={this.closeDetails}>X</button>

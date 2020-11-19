@@ -1,4 +1,4 @@
-# Cabify Challenge Ana M.Lanz
+# Challenge Ana M.Lanz
 
 ## HOW TO INSTALL:
 Install node.js
