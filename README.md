@@ -1,10 +1,13 @@
 # Challenge Ana M.Lanz
 
 ## HOW TO INSTALL:
+Install project dependencies
 
-npm install
+`npm install`
 
-npm start
+Start the application locally
+
+`npm start`
 
 ## DESCRIPTION
 
