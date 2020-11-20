@@ -1,4 +1,5 @@
-# Challenge Ana M.Lanz
+# SHOPPING CART CHALLENGE
+Shopping cart developed with React and Nodejs
 
 ## HOW TO INSTALL:
 Install project dependencies
