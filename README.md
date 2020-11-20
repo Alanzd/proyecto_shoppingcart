@@ -1,12 +1,8 @@
 # Challenge Ana M.Lanz
 
 ## HOW TO INSTALL:
-Install node.js
 
-install react in the appropiate folder : npm install -g create-react-app
-
-create react project:  create-react-app nameOfMyProject
-cd nameOfMyProject
+npm install
 
 install the component modal from react: npm install react-modal
 
