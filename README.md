@@ -4,8 +4,6 @@
 
 npm install
 
-install the component modal from react: npm install react-modal
-
 npm start
 
 ## DESCRIPTION
